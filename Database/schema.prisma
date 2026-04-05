@@ -1,0 +1,137 @@
+// schema.prisma — Thiết kế Database MiniGarden bằng Prisma ORM
+// Prisma sẽ tự tạo kiểu TypeSafe giúp truy vấn DB an toàn, không cần viết SQL thuần
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL") // Neon cần directUrl cho non-pooled connections
+}
+
+// BẢNG NGƯỜI DÙNG
+model User {
+  user_id       Int       @id @default(autoincrement())
+  username      String    @unique
+  password_hash String
+  full_name     String?
+  email         String    @unique
+  phone         String?
+  role          String    @default("customer") // "customer" hoặc "admin"
+  reset_token   String?
+  reset_expiry  DateTime?
+  created_at    DateTime  @default(now())
+
+  addresses     UserAddress[]
+  cart          Cart?
+  orders        Order[]
+  sentMessages  Message[] @relation("SentMessages")
+  receivedMsgs  Message[] @relation("ReceivedMessages")
+
+  @@map("users")
+}
+
+model Product {
+  product_id     Int       @id @default(autoincrement())
+  product_name   String
+  description    String?
+  price          Decimal   @db.Decimal(12, 2)
+  stock_quantity Int       @default(1)
+  image_url      String?
+  category       String?
+  created_at     DateTime  @default(now())
+
+  cart_items     CartItem[]
+  order_details  OrderDetail[]
+
+  @@map("products")
+}
+
+// BẢNG GIỎ HÀNG
+model Cart {
+  cart_id    Int      @id @default(autoincrement())
+  user_id    Int      @unique
+  created_at DateTime @default(now())
+
+  user  User       @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  items CartItem[]
+
+  @@map("carts")
+}
+
+// BẢNG CHI TIẾT GIỎ HÀNG
+model CartItem {
+  cart_item_id Int @id @default(autoincrement())
+  cart_id      Int
+  product_id   Int
+  quantity     Int @default(1)
+
+  cart    Cart    @relation(fields: [cart_id], references: [cart_id], onDelete: Cascade)
+  product Product @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+
+  @@unique([cart_id, product_id])
+  @@map("cart_items")
+}
+
+// BẢNG ĐƠN HÀNG
+model Order {
+  order_id         Int      @id @default(autoincrement())
+  user_id          Int
+  order_date       DateTime @default(now())
+  total_amount     Decimal  @db.Decimal(12, 2)
+  shipping_address String
+  payment_method   String   @default("COD")
+  status           String   @default("pending")
+  payos_order_id   String?
+  updated_at       DateTime @updatedAt
+
+  user    User          @relation(fields: [user_id], references: [user_id])
+  details OrderDetail[]
+
+  @@map("orders")
+}
+
+// BẢNG CHI TIẾT ĐƠN HÀNG
+model OrderDetail {
+  order_detail_id   Int     @id @default(autoincrement())
+  order_id          Int
+  product_id        Int
+  quantity          Int
+  price_at_purchase Decimal @db.Decimal(12, 2)
+
+  order   Order   @relation(fields: [order_id], references: [order_id], onDelete: Cascade)
+  product Product @relation(fields: [product_id], references: [product_id])
+
+  @@map("order_details")
+}
+
+// BẢNG TIN NHẮN CHAT
+model Message {
+  message_id   Int      @id @default(autoincrement())
+  sender_id    Int
+  receiver_id  Int
+  message_text String
+  sent_at      DateTime @default(now())
+  is_read      Boolean  @default(false)
+
+  sender   User @relation("SentMessages", fields: [sender_id], references: [user_id])
+  receiver User @relation("ReceivedMessages", fields: [receiver_id], references: [user_id])
+
+  @@map("messages")
+}
+
+model UserAddress {
+  address_id Int      @id @default(autoincrement())
+  user_id    Int
+  full_name  String   
+  phone      String   
+  address    String
+  is_default Boolean  @default(false)
+  created_at DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+
+  @@map("user_addresses")
+}

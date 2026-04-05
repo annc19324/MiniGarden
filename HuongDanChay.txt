@@ -1,0 +1,46 @@
+HUONG DAN CAI DAT VA CHAY UNG DUNG MINIGARDEN
+
+1. YEAU CAU MOI TRUONG:
+- Node.js >= 18.0
+- PostgreSQL (co the dung Neon.tech hoac PostgreSQL cai dat local)
+- API Cloudinary (dung de luu anh)
+- API PayOS (dung de thanh toan QR)
+
+2. CAU TRUC THU MUC:
+- /server: Ma nguon Backend (NodeJS + Express)
+- /client: Ma nguon Frontend (ReactJS + Vite)
+- /Database: File export (.sql) va Prisma schema (.prisma)
+
+3. CAC BUOC CAI DAT:
+
+BUOC 1: CAU HINH DATABASE
+- Import file Database/minigarden_postgresql_dump.sql vao PostgreSQL server cua ban.
+- Hoac chay "npx prisma push" tu thu muc server de tao lai cau truc tu file schema.prisma.
+
+BUOC 2: CAI DAT BACKEND (SERVER)
+- Mo terminal tai thu muc /server.
+- Chay lenh: "npm install" de cai cac thu vien.
+- Mo file .env ngang hang voi package.json, nhap DATABASE_URL trinh tu: 
+  postgresql://user:password@host:port/database_name
+- Chay lenh: "npx prisma generate" (neu can).
+- Chay lenh: "npm run dev" de khoi dong server (Mac dinh Port: 5000).
+
+BUOC 3: CAI DAT FRONTEND (CLIENT)
+- Mo terminal moi tai thu muc /client.
+- Chay lenh: "npm install".
+- Chay lenh: "npm run dev".
+- Truy cap: "http://localhost:5173" de su dung.
+
+4. TAI KHOAN DANG NHAP MAC DINH (SEED DATA):
+--------------------------------------------------
+- QUAN TRI VIEN (ADMIN):
+  + Username: admin
+  + Password: admin@123
+- KHACH HANG (CUSTOMER):
+  + Username: user
+  + Password: user@123
+--------------------------------------------------
+
+TRUONG HOP KHONG CO DATABASE:
+- Neu muon chay lai tu dau ma khong can import SQL:
+- Chay lenh "npx prisma db seed" tai thu muc /server de tao du lieu mau admin/user mac dinh.
