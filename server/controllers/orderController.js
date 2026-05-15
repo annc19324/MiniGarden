@@ -18,16 +18,21 @@ const orderController = {
         try {
             await db.query('BEGIN');
 
-            // Kiểm tra tồn kho từng sản phẩm
+            // Kiểm tra tồn kho và lấy thông tin sản phẩm
             for (const item of items) {
-                const stock = await db.query(
-                    'SELECT stock_quantity, product_name FROM products WHERE product_id=$1',
+                const productRes = await db.query(
+                    'SELECT stock_quantity, product_name, price FROM products WHERE product_id=$1',
                     [item.product_id]
                 );
-                if (stock.rows.length === 0) throw new Error(`Sản phẩm #${item.product_id} không tồn tại.`);
-                if (stock.rows[0].stock_quantity < item.quantity) {
-                    throw new Error(`Sản phẩm "${stock.rows[0].product_name}" không đủ tồn kho.`);
+                if (productRes.rows.length === 0) throw new Error(`Sản phẩm #${item.product_id} không tồn tại.`);
+                const product = productRes.rows[0];
+                
+                if (product.stock_quantity < item.quantity) {
+                    throw new Error(`Sản phẩm "${product.product_name}" không đủ tồn kho.`);
                 }
+                // Gán tên và giá từ DB để đảm bảo chính xác
+                item.product_name = product.product_name;
+                item.price = Number(product.price);
             }
 
             // Tính tổng tiền
@@ -64,18 +69,23 @@ const orderController = {
 
             // Nếu dùng PayOS: tạo link thanh toán
             if (payment_method === 'PayOS') {
-                const orderCode = Number(String(Date.now()).slice(-8));
-                const paymentLink = await payos.createPaymentLink({
+                const orderCode = Number(String(Date.now()).slice(-9)); // Dùng 9 số cuối của timestamp cho an toàn
+                
+                const payosItems = items.map(i => ({
+                    name:     (i.product_name || 'Sản phẩm').substring(0, 50),
+                    quantity: Number(i.quantity),
+                    price:    Math.round(Number(i.price)),
+                }));
+
+                const totalAmountPayOS = payosItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                const paymentLink = await payos.paymentRequests.create({
                     orderCode,
-                    amount:      Math.round(total_amount),
+                    amount:      totalAmountPayOS,
                     description: `MiniGarden #${orderId}`.substring(0, 25),
-                    items:       items.map(i => ({
-                        name:     'Cây cảnh mini',
-                        quantity: i.quantity,
-                        price:    Math.round(i.price),
-                    })),
-                    returnUrl: process.env.PAYOS_RETURN_URL,
-                    cancelUrl: process.env.PAYOS_CANCEL_URL,
+                    items:       payosItems,
+                    returnUrl:   process.env.PAYOS_RETURN_URL || `${process.env.FRONTEND_URL}/success`,
+                    cancelUrl:   process.env.PAYOS_CANCEL_URL || `${process.env.FRONTEND_URL}/cancel`,
                 });
 
                 // Lưu mã PayOS để đối soát webhook
@@ -92,8 +102,12 @@ const orderController = {
             res.status(201).json({ error: 0, message: 'Tạo đơn hàng thành công!', data: responseData });
         } catch (err) {
             await db.query('ROLLBACK');
-            console.error('Create order error:', err);
-            res.status(500).json({ error: -1, message: err.message });
+            console.error('[Create Order Error Details]:', {
+                message: err.message,
+                stack: err.stack,
+                payosError: err.response?.data
+            });
+            res.status(500).json({ error: -1, message: err.message || 'Lỗi xử lý thanh toán.' });
         }
     },
 
@@ -101,15 +115,16 @@ const orderController = {
     handlePayOSCallback: async (req, res) => {
         try {
             // Xác thực chữ ký webhook từ PayOS
-            const webhookData = payos.verifyPaymentWebhookData(req.body);
+            const webhookData = await payos.webhooks.verify(req.body);
 
-            if (webhookData.code === '00') {
+            // Kiểm tra code thành công (00) hoặc status (PAID)
+            if (req.body.code === '00' || webhookData.status === 'PAID') {
                 // Thanh toán thành công → cập nhật status
                 await db.query(
                     'UPDATE orders SET status=$1, updated_at=NOW() WHERE payos_order_id=$2',
                     ['paid', String(webhookData.orderCode)]
                 );
-                console.log(`[PayOS] Order ${webhookData.orderCode} PAID`);
+                console.log(`[PayOS] Webhook success for order: ${webhookData.orderCode}`);
             }
 
             res.json({ error: 0, message: 'ok', data: webhookData });

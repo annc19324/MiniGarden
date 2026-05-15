@@ -110,6 +110,12 @@ function handleRoute() {
   } else if (path.startsWith('/chat')) {
     if (!currentUser) { showToast('Đăng nhập để vào trò chuyện!', 'info'); openModal('modal-login'); navigateTo('/'); return; }
     showPage('page-chat'); loadChatPage();
+  } else if (path.startsWith('/success')) {
+    showToast('Thanh toán thành công! Cảm ơn bạn đã mua hàng.', 'success');
+    navigateTo('/orders');
+  } else if (path.startsWith('/cancel')) {
+    showToast('Thanh toán đã bị hủy.', 'warning');
+    navigateTo('/cart');
   } else if (path.startsWith('/reset-password')) {
     showPage('page-reset-password');
   } else {
@@ -743,7 +749,8 @@ document.getElementById('form-checkout').onsubmit = async (e) => {
             navigateTo('/orders');
         }
     } catch (err) {
-        showToast(err.response?.data?.error || 'Lỗi đặt hàng!', 'error');
+        const errorMsg = err.response?.data?.message || err.response?.data?.error || 'Lỗi đặt hàng!';
+        showToast(errorMsg, 'error');
     } finally { btn.disabled = false; btn.textContent = 'Xác nhận đặt hàng'; }
 };
 

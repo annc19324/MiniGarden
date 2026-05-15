@@ -187,7 +187,7 @@ const userController = {
         try {
             const result = await db.query(
                 'SELECT user_id, username, full_name, email, phone, role, created_at FROM users WHERE user_id = $1',
-                [req.user.id]
+                [req.user.user_id]
             );
             if (result.rows.length === 0) return res.status(404).json({ message: 'Không tìm thấy user.' });
             res.json(result.rows[0]);
@@ -203,7 +203,7 @@ const userController = {
             const updated = await db.query(
                 `UPDATE users SET full_name=$1, phone=$2 WHERE user_id=$3
                  RETURNING user_id, username, full_name, email, phone, role`,
-                [full_name, phone, req.user.id]
+                [full_name, phone, req.user.user_id]
             );
             res.json({ message: 'Cập nhật thành công!', user: updated.rows[0] });
         } catch (err) {
@@ -222,12 +222,12 @@ const userController = {
         }
 
         try {
-            const result = await db.query('SELECT password_hash FROM users WHERE user_id = $1', [req.user.id]);
+            const result = await db.query('SELECT password_hash FROM users WHERE user_id = $1', [req.user.user_id]);
             const validPass = await bcrypt.compare(old_password, result.rows[0].password_hash);
             if (!validPass) return res.status(400).json({ message: 'Mật khẩu cũ không đúng.' });
 
             const newHash = await bcrypt.hash(new_password, 10);
-            await db.query('UPDATE users SET password_hash=$1 WHERE user_id=$2', [newHash, req.user.id]);
+            await db.query('UPDATE users SET password_hash=$1 WHERE user_id=$2', [newHash, req.user.user_id]);
 
             res.json({ message: 'Đổi mật khẩu thành công!' });
         } catch (err) {

@@ -8,7 +8,7 @@ const paymentController = {
     // ── TẠO LINK NẠP LƯỢT ĐẨY TIN ─────────────────────────────
     createPushOrder: async (req, res) => {
         const { pack_type } = req.body; // 'PRO_PACK' (100 lượt), 'BASIC_PACK' (10 lượt)...
-        const userId = req.user.id;
+        const userId = req.user.user_id;
 
         const packs = {
             'BASIC_PACK': { amount: 10000, pushes: 10,  label: 'Gói Basic (10 lượt)' },
@@ -19,8 +19,8 @@ const paymentController = {
         if (!config) return res.status(400).json({ message: 'Gói không hợp lệ.' });
 
         try {
-            const orderCode = Number(String(Date.now()).slice(-8));
-            const paymentLink = await payos.createPaymentLink({
+            const orderCode = Number(String(Date.now()).slice(-9));
+            const paymentLink = await payos.paymentRequests.create({
                 orderCode,
                 amount:      config.amount,
                 description: `NAP_DAY_TIN_${userId}`.substring(0, 25),
@@ -45,9 +45,9 @@ const paymentController = {
     // ── WEBHOOK XỬ LÝ NẠP THÀNH CÔNG ───────────────────────────
     handleWebhook: async (req, res) => {
         try {
-            const webhookData = payos.verifyPaymentWebhookData(req.body);
+            const webhookData = await payos.webhooks.verify(req.body);
 
-            if (webhookData.code === '00') {
+            if (req.body.code === '00') {
                 const description = webhookData.description || '';
                 const orderCode   = String(webhookData.orderCode);
                 

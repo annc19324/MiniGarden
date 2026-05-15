@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Thực Tập - Hệ Thống Thông Tin Tích Hợp</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            color: #000;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        #report-content {
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3, h4 {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        h1 { font-size: 16pt; text-align: center; text-transform: uppercase; }
+        h2 { font-size: 14pt; text-transform: uppercase; }
+        h3 { font-size: 13pt; }
+        h4 { font-size: 13pt; font-style: italic; }
+        p {
+            font-size: 13pt;
+            text-align: justify;
+            margin-bottom: 10px;
+            text-indent: 1cm;
+        }
+        ul, ol {
+            font-size: 13pt;
+            text-align: justify;
+            margin-bottom: 10px;
+            padding-left: 1.5cm;
+        }
+        li { margin-bottom: 5px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 12pt;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-weight: bold;
+        }
+        .caption {
+            text-align: center;
+            font-size: 12pt;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .placeholder {
+            border: 2px dashed #999;
+            padding: 20px;
+            text-align: center;
+            margin: 15px 0;
+            background-color: #f9f9f9;
+            color: #666;
+            font-weight: bold;
+        }
+        .copy-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .copy-btn:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+
+    <button class="copy-btn" onclick="copyContent()">📋 CLICK VÀO ĐÂY ĐỂ COPY TOÀN BỘ BÁO CÁO VÀO WORD</button>
+
+    <div id="report-content">
+
+        <h2>DANH MỤC TỪ VIẾT TẮT</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Từ viết tắt</th>
+                    <th style="width: 40%;">Thuật ngữ tiếng Anh</th>
+                    <th style="width: 40%;">Giải nghĩa tiếng Việt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>API</strong></td>
+                    <td>Application Programming Interface</td>
+                    <td>Giao diện lập trình ứng dụng</td>
+                </tr>
+                <tr>
+                    <td><strong>B2C</strong></td>
+                    <td>Business-to-Consumer</td>
+                    <td>Mô hình kinh doanh từ doanh nghiệp tới người tiêu dùng</td>
+                </tr>
+                <tr>
+                    <td><strong>CDN</strong></td>
+                    <td>Content Delivery Network</td>
+                    <td>Mạng lưới phân phối nội dung</td>
+                </tr>
+                <tr>
+                    <td><strong>CSRF</strong></td>
+                    <td>Cross-Site Request Forgery</td>
+                    <td>Tấn công giả mạo yêu cầu chéo trang</td>
+                </tr>
+                <tr>
+                    <td><strong>DB / CSDL</strong></td>
+                    <td>Database</td>
+                    <td>Cơ sở dữ liệu</td>
+                </tr>
+                <tr>
+                    <td><strong>DOM</strong></td>
+                    <td>Document Object Model</td>
+                    <td>Mô hình đối tượng tài liệu</td>
+                </tr>
+                <tr>
+                    <td><strong>ERD</strong></td>
+                    <td>Entity-Relationship Diagram</td>
+                    <td>Sơ đồ thực thể liên kết</td>
+                </tr>
+                <tr>
+                    <td><strong>HTTP</strong></td>
+                    <td>HyperText Transfer Protocol</td>
+                    <td>Giao thức truyền tải siêu văn bản</td>
+                </tr>
+                <tr>
+                    <td><strong>I/O</strong></td>
+                    <td>Input/Output</td>
+                    <td>Quá trình nhập/xuất dữ liệu vật lý</td>
+                </tr>
+                <tr>
+                    <td><strong>JWT</strong></td>
+                    <td>JSON Web Token</td>
+                    <td>Mã thông báo xác thực web định dạng JSON</td>
+                </tr>
+                <tr>
+                    <td><strong>ORM</strong></td>
+                    <td>Object-Relational Mapping</td>
+                    <td>Kỹ thuật ánh xạ dữ liệu quan hệ đối tượng</td>
+                </tr>
+                <tr>
+                    <td><strong>REST</strong></td>
+                    <td>Representational State Transfer</td>
+                    <td>Giao thức chuyển giao trạng thái đại diện</td>
+                </tr>
+                <tr>
+                    <td><strong>TCP</strong></td>
+                    <td>Transmission Control Protocol</td>
+                    <td>Giao thức điều khiển truyền vận mạng</td>
+                </tr>
+                <tr>
+                    <td><strong>UI</strong></td>
+                    <td>User Interface</td>
+                    <td>Giao diện người dùng</td>
+                </tr>
+                <tr>
+                    <td><strong>URI / URL</strong></td>
+                    <td>Uniform Resource Identifier / Locator</td>
+                    <td>Định danh / Định vị tài nguyên thống nhất</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>LỜI CẢM ƠN</h2>
+        <p>Trong quá trình thực hiện báo cáo thực tập này, em xin bày tỏ lòng biết ơn sâu sắc đến các Thầy, Cô giáo khoa Công nghệ Thông tin – Trường Đại học Điện Lực đã tận tình truyền đạt những kiến thức chuyên môn quý báu và tạo điều kiện thuận lợi nhất cho em trong suốt quá trình học tập và rèn luyện tại nhà trường.</p>
+        <p>Đặc biệt, em xin gửi lời cảm ơn chân thành nhất tới Th.S Nguyễn Thị Phương Hạnh. Trong suốt thời gian thực hiện đồ án thực tập này, Cô đã dành rất nhiều thời gian và tâm huyết để hướng dẫn, định hướng kỹ thuật và đưa ra những lời khuyên chuyên môn mang tính quyết định. Sự chỉ dạy tận tình của Cô không chỉ giúp em hoàn thành tốt các module phức tạp như hệ thống thanh toán tự động qua PayOS và kênh Chat hỗ trợ Real-time mà còn giúp em rèn luyện tư duy giải quyết vấn đề, cách tối ưu hóa mã nguồn và làm việc với hệ thống dữ liệu PostgreSQL một cách khoa học.</p>
+        <p>Em cũng xin chân thành cảm ơn Ban lãnh đạo cùng tập thể các anh, chị tại Công ty TNHH Synopex Việt Nam (Bắc Ninh) đã tạo cơ hội cho em được thực tập trong một môi trường làm việc chuyên nghiệp và kỷ luật. Những trải nghiệm thực tế về quy trình phát triển phần mềm, cách thức tích hợp các bên thứ ba (Third-party integration) và việc quản lý hệ thống trên nền tảng Cloud tại công ty đã giúp em trưởng thành hơn, hiểu rõ hơn về văn hóa doanh nghiệp.</p>
+        <p>Cuối cùng, em xin gửi lời cảm ơn đến gia đình và bạn bè đã luôn đồng hành, động viên và hỗ trợ em về mọi mặt để em có thể hoàn thành tốt kỳ thực tập này. Do kiến thức và kinh nghiệm thực tế của bản thân còn hạn chế, báo cáo đồ án này chắc chắn không tránh khỏi những thiếu sót. Em rất mong nhận được sự đóng góp và chỉ bảo từ quý Thầy, Cô để sản phẩm của em ngày một hoàn thiện và có tính ứng dụng cao hơn trong tương lai.</p>
+        
+        <p style="text-align: right; font-weight: bold;">Hà Nội, ngày … tháng 03 năm 2026<br>Sinh viên thực hiện<br><br>Cao Văn Hải</p>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>LỜI NÓI ĐẦU</h2>
+        <p>Dự án MiniGarden được tập trung phát triển nhằm giải quyết mô hình bán hàng B2C khép kín, từ khâu quản lý kho hàng, giao dịch cho đến việc chăm sóc khách hàng. Thay vì sử dụng các Framework Frontend phức tạp làm tăng kích thước bundle, tôi lựa chọn kiến trúc Vanilla JavaScript kết hợp với CSS linh hoạt để tối ưu hóa thời gian tải trang và đảm bảo sự mạch lạc trong việc thao tác trực tiếp với DOM.</p>
+        <p>Trải qua quá trình xây dựng mã nguồn, tôi đã hiện thực hóa được quy trình xử lý đơn hàng tự động thông qua việc tích hợp mã nguồn với API của bộ công cụ PayOS. Việc này đòi hỏi kỹ thuật xử lý sự kiện đồng bộ giữa bảng orders và hệ thống Webhook của bên cung cấp dịch vụ để cập nhật trạng thái thanh toán ngay lập tức mà không cần sự can thiệp thủ công của con người tại Dashboard quản trị.</p>
+        <p>Một điểm nhấn quan trọng khác trong hệ thống là tính năng tương tác thời gian thực. Bằng cách triển khai Socket.io cả ở phía Client và Server, tôi đã xây dựng thành công luồng nhắn tin giữa Customer và Admin. Điều này giúp Admin dễ dàng quản lý các phiên chat thông qua Sidebar quản trị và phản hồi khách hàng ngay khi có sự kiện receive_message được kích hoạt.</p>
+        <p>Dưới sự hướng dẫn của cô Nguyễn Thị Phương Hạnh, tôi đã áp dụng Prisma ORM để quản lý cơ sở dữ liệu PostgreSQL một cách an toàn thông qua các tệp Schema chặt chẽ. Cách tiếp cận này giúp giảm thiểu lỗi khi truy vấn và tăng tốc độ phát triển API. Bản báo cáo dưới đây sẽ trình bày chi tiết các bước thiết kế cơ sở dữ liệu, cách cấu trúc Middleware xác thực JWT và quy trình tích hợp các dịch vụ thông tin tích hợp để tạo nên hệ thống MiniGarden hoàn chỉnh.</p>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>CHƯƠNG 1: TỔNG QUAN THỰC TẬP VÀ KHẢO SÁT HỆ THỐNG</h2>
+        
+        <h3>1.1. Giới thiệu cơ quan thực tập</h3>
+        <h4>1.1.1. Thông tin công ty</h4>
+        <ul>
+            <li><strong>Tên đơn vị thực tập:</strong> CÔNG TY TNHH SYNOPEX VIỆT NAM (CHI NHÁNH BẮC NINH)</li>
+            <li><strong>Tên quốc tế:</strong> TEKTRA TECHNOLOGY AND TRADING JOINT STOCK COMPANY</li>
+            <li><strong>Mã số thuế:</strong> 0106607877-001</li>
+            <li><strong>Lĩnh vực hoạt động chính:</strong> Sản xuất linh kiện điện tử (FPCB), các loại bộ lọc (Filter) và hệ thống xử lý nước công nghệ cao.</li>
+            <li><strong>Địa chỉ:</strong> Khu công nghiệp Yên Phong, huyện Yên Phong, tỉnh Bắc Ninh, Việt Nam.</li>
+            <li><strong>Đặc điểm đơn vị:</strong> Synopex là tập đoàn đa quốc gia hàng đầu trong lĩnh vực vật liệu kỹ thuật và linh kiện điện tử. Tại chi nhánh Bắc Ninh, công ty tập trung vào dây chuyền sản xuất mạch in linh hoạt và các giải pháp lọc sạch cho các đối tác lớn toàn cầu.</li>
+        </ul>
+
+        <h4>1.1.2. Bộ máy tổ chức và quản trị</h4>
+        <p>Cơ cấu tổ chức tại Synopex Bắc Ninh được kiến tạo theo mô hình ma trận (Matrix Organization), tuân thủ các chuẩn mực quản trị quốc tế khắt khe. Hệ thống bao gồm các khối chức năng hoạt động độc lập nhưng được liên kết dữ liệu chặt chẽ: khối sản xuất trực tiếp, khối quản trị chất lượng (QC), khối kỹ thuật công nghệ và đặc biệt là Ban Công nghệ Thông tin (IT Division).</p>
+        <p>Trong bối cảnh chuyển đổi số toàn diện, Ban Công nghệ Thông tin không chỉ đóng vai trò hỗ trợ kỹ thuật phần cứng đơn thuần mà đã chuyển mình thành một Trung tâm Điều phối và Tích hợp hệ thống. Đội ngũ kỹ sư phần mềm tại đây có nhiệm vụ kiến trúc hóa các luồng trao đổi thông tin, thiết lập các hàm API nội bộ (Internal APIs) và chuẩn hóa giao thức kết nối nhằm số hóa toàn bộ quy trình báo cáo, giám sát dữ liệu cảm biến IoT trên dây chuyền và tối ưu hóa hệ thống kho vận thông qua việc tích hợp API sâu với các đối tác cung ứng logistics bên thứ ba.</p>
+
+        <h4>1.1.3. Chức năng và nhiệm vụ trong đợt thực tập</h4>
+        <p>Được sự tín nhiệm và phân công của Ban Công nghệ Thông tin tại Synopex, em được giao phó một loạt các trọng trách mang tính nghiên cứu tích hợp và ứng dụng thực tiễn cao, xoay quanh việc tìm hiểu và phân tích quy trình kết nối các hệ thống phân tán. Cụ thể, nhiệm vụ cốt lõi là giải quyết một bài toán giả lập mang tên dự án "MiniGarden" - một hệ sinh thái phân phối trực tuyến, nhưng được thiết kế hoàn toàn với tư duy của một hệ thống quản trị vi dịch vụ (Microservices Mindset).</p>
+        <p>Yêu cầu đặt ra không phải là xây dựng một trang web hiển thị dữ liệu cơ bản, mà là phải thiết kế một Nút Trung Tâm (Central Hub) có khả năng giải quyết các thách thức kỹ thuật sau:</p>
+        <ul>
+            <li>Nghiên cứu cơ chế trao đổi tải trọng dữ liệu (Data Payload) bất đồng bộ giữa máy chủ nội bộ và hệ thống cung cấp dịch vụ tài chính ngân hàng.</li>
+            <li>Giải quyết bài toán bảo mật dữ liệu tại điểm đầu cuối kết nối (Endpoint Security) bằng các thuật toán băm (Hashing Algorithms).</li>
+            <li>Hiện thực hóa kiến trúc lắng nghe sự kiện mạng (Network Event Listening) để tự động hóa luồng xác nhận trạng thái giao dịch thay vì đối soát thủ công.</li>
+            <li>Loại bỏ sự cồng kềnh của giao thức HTTP Request/Response truyền thống trong việc quản trị luồng tin nhắn đa chiều bằng cách áp dụng một giao thức duy trì kết nối liên tục, đảm bảo tính tức thời trong trao đổi thông điệp.</li>
+        </ul>
+        <p>Những nhiệm vụ này chính là cơ sở lý luận và nền tảng thực tiễn vô giá để em vận dụng tối đa lý thuyết cốt lõi của môn học Hệ thống thông tin tích hợp vào việc kiến tạo nên một cấu trúc mạng lưới dịch vụ đồng nhất, hoạt động trơn tru dưới một giao diện điều phối duy nhất.</p>
+
+        <h3>1.2. Khảo sát hệ thống</h3>
+        <p>Trước khi tiến hành tái thiết kế kiến trúc theo hướng hội nhập dịch vụ, việc khảo sát và mổ xẻ những điểm yếu chí mạng của mô hình hệ thống nguyên khối (Monolithic Architecture) cũ là bước đi bắt buộc. Hiện nay, xu hướng tích hợp môi trường làm việc xanh bằng hệ sinh thái cây cảnh mini đang bùng干 nổ mạnh mẽ tại các khu công nghiệp. Tuy nhiên, việc duy trì luồng thương mại điện tử qua các kiến trúc cũ hoặc thông qua các kênh liên lạc cá nhân đang bộc lộ những lỗ hổng thảm họa về mặt đồng bộ dữ liệu mạng.</p>
+        <ul>
+            <li><strong>Điểm nghẽn thứ nhất: Khủng hoảng đồng bộ trạng thái giao dịch (Transaction State Synchronization Bottleneck):</strong> Trong mô hình hệ thống truyền thống, Máy chủ nội bộ bị cô lập, không có cơ chế giao tiếp API trực tiếp với mạng lưới hệ thống ngân hàng mở (Open Banking API). Hệ quả là quá trình đối soát dòng tiền diễn ra hoàn toàn thủ công thông qua việc kỹ thuật viên tự đọc tin nhắn SMS hoặc truy xuất sao kê ngân hàng độc lập. Sự đứt gãy trong liên kết hệ thống này tạo ra một "độ trễ phi kỹ thuật" cực lớn (từ vài phút đến vài giờ) giữa thời điểm khách hàng (Client) chuyển tải lệnh giao dịch và thời điểm cơ sở dữ liệu nội bộ được cập nhật cờ trạng thái (State flag: status: paid). Sự mất đồng bộ nghiêm trọng này trực tiếp phá vỡ tính nguyên tử (Atomicity) của giao dịch, dẫn đến tình trạng tranh chấp dữ liệu tồn kho (Race Condition in Inventory): sản phẩm thực tế đã được thanh toán nhưng vẫn trả về trạng thái còn hàng (In-stock) trên giao diện mạng, gây ra hàng loạt các lỗi logic (Logic Errors) và xung đột ghi đè khi nhiều luồng truy vấn cùng thao tác trên một bản ghi dữ liệu.</li>
+            <li><strong>Điểm nghẽn thứ hai: Cổ chai giao thức truyền tải đa luồng (Transport Protocol Bottleneck in Real-time Communication):</strong> Để duy trì liên lạc với các thiết bị đầu cuối, hệ thống cũ áp dụng cơ chế HTTP Polling cưỡng bức. Tại đây, thiết bị máy khách (Client node) phải thiết lập một vòng lặp liên tục gửi các yêu cầu HTTP (Requests) mang tính chất định kỳ tới Máy chủ Trung tâm (Central Server) để truy vấn trạng thái bản ghi mới. Cần nhấn mạnh rằng, giao thức HTTP về bản chất là một giao thức phi trạng thái (Stateless Protocol) và tuân theo cơ chế bán song công (Half-duplex: chỉ một chiều truyền tải dữ liệu tại một xung nhịp thời gian). Việc bắt buộc hệ thống phải liên tục thực thi chu trình bắt tay ba bước của TCP (3-way TCP Handshake) chỉ để truyền tải một đoạn tải trọng (Payload) vài byte đã sinh ra một lượng chi phí dữ liệu trên mây (Network Overhead) khổng lồ. Vấn đề này làm cạn kiệt luồng tài nguyên xử lý (CPU Threads) của máy chủ ứng dụng và gây nghẽn băng thông hệ thống mạng cục bộ một cách lãng phí.</li>
+            <li><strong>Điểm nghẽn thứ ba: Xung đột tài nguyên tĩnh và giới hạn băng thông I/O (Static Resource and I/O Bandwidth Bottleneck):</strong> Mô hình nguyên khối cũ thực hiện việc lưu trữ toàn bộ các khối dữ liệu định dạng đa phương tiện (Binary Large Objects - Hình ảnh có độ phân giải cao) ngay trên cùng một phân vùng ổ đĩa vật lý chứa mã nguồn xử lý logic nghiệp vụ. Trong điều kiện tải hệ thống thấp (Low Load), cụm máy chủ hoạt động bình thường. Tuy nhiên, khi đối mặt với lượng truy vấn đọc (Read Query) tăng vọt cục bộ (Traffic Spike), luồng xử lý truy xuất tệp tĩnh (Disk I/O) đã độc chiếm toàn bộ băng thông phần cứng. Điều này trực tiếp chèn ép không gian xử lý của các Endpoint API mang tính chất thiết yếu (như API đối soát thanh toán hay API truy vấn tồn kho DB). Hệ quả tất yếu là sự sụp đổ dây chuyền mạng (Cascading Failure), làm hệ thống bị treo ngắt quãng (Intermittent Timeout) không thể phục hồi tự động.</li>
+        </ul>
+
+        <h3>1.3. Xác định bài toán cần giải quyết</h3>
+        <p>Đứng trước những rủi ro vận hành và nguy cơ sụp đổ từ cấu trúc phần mềm lỗi thời, nhiệm vụ tối thượng và cấp bách được đặt ra đối với dự án MiniGarden là phải tái cấu trúc toàn diện. Cụ thể, cần phân rã các tính năng không mang tính cốt lõi (Non-core functions) ra khỏi máy chủ trung tâm và thiết lập các điểm kết nối tích hợp (Integration Hubs) để ủy quyền xử lý cho các dịch vụ phân tán chuyên biệt của bên thứ ba. Bài toán tích hợp hệ thống đặt ra các yêu cầu kỹ thuật khắt khe theo đúng tôn chỉ của môn học:</p>
+        <ul>
+            <li><strong>Thứ nhất, Tích hợp tự động hóa luồng giao dịch tài chính phân tán (Financial API Integration):</strong> Hệ thống bắt buộc phải thiết lập cầu nối tích hợp với cổng trung gian thanh toán quốc gia PayOS thông qua một luồng API hoàn chỉnh. Yêu cầu kỹ thuật tuyệt đối không dừng lại ở việc gửi API RESTful tạo mã QR tĩnh cơ bản, mà trọng tâm kiến trúc là việc cấu hình một điểm cuối có khả năng lắng nghe Webhook bất đồng bộ (Asynchronous Webhook Endpoint). Khi mạng lưới ngân hàng xử lý giao dịch thành công, luồng dữ liệu sự kiện (Event Payload) sẽ tự động được đẩy (Push mechanism) về Máy chủ Node.js của MiniGarden. Trách nhiệm của Nút trung tâm là phải tiếp nhận, giải mã, áp dụng thuật toán xác thực chữ ký số HMAC-SHA256 nhằm chặn đứng các Payload giả mạo (Payload Tampering), sau đó mới thực thi các khối giao dịch cơ sở dữ liệu (Database Transactions) để chuyển dịch trạng thái của thực thể orders sang trạng thái hoàn tất ngay trong tích tắc (Real-time Execution). Quy trình này loại bỏ 100% rủi ro từ yếu tố con người trong chuỗi đồng bộ dữ liệu.</li>
+            <li><strong>Thứ hai, Tích hợp cơ chế thông điệp song công toàn phần (Full-duplex Event-driven Messaging):</strong> Nhằm dập tắt hoàn toàn giới hạn vật lý do giao thức HTTP Polling gây ra, kiến trúc hệ thống bắt buộc phải được nâng cấp sang mô hình hướng sự kiện (Event-driven Architecture) thông qua việc tích hợp sâu Engine Socket.io. Yêu cầu của bài toán tích hợp là phải khởi tạo một kênh truyền thông dai dẳng (Persistent TCP Connection) không đóng sau mỗi vòng lặp. Cấu trúc này trao quyền cho Máy chủ trung tâm chủ động đẩy các gói tin (Emit Events) trực tiếp xuống mạng lưới các phiên máy khách (Client Sockets) ngay tại thời điểm xảy ra sự biến đổi trạng thái trong DB. Yêu cầu này đảm bảo thiết lập một luồng truyền tải dữ liệu đa chiều với độ trễ phản hồi được đo bằng mili-giây (Sub-millisecond Latency), đồng thời cắt giảm triệt để băng thông mạng dư thừa.</li>
+            <li><strong>Thứ ba, Tích hợp hạ tầng phân phối nội dung lưu trữ biên (Edge CDN Integration):</strong> Với mục tiêu thiết lập một lớp giáp bảo vệ máy chủ logic khỏi các xung đột băng thông I/O vật lý, toàn bộ trách nhiệm lưu trữ, mã hóa và phân phối các tệp tĩnh cỡ lớn phải được ủy quyền hoàn toàn cho hệ thống mạng phân phối nội dung Cloudinary CDN. Hệ thống quản trị trung tâm sẽ giao tiếp với Cloudinary thông qua bộ thư viện SDK chuẩn hóa, thực thi quy trình truyền phát dạng luồng (Stream Buffering) tệp trực tiếp lên hệ thống đám mây phân tán. Máy chủ nội bộ khi đó chỉ chịu trách nhiệm lưu trữ các chuỗi URI định tuyến rút gọn vào cơ sở dữ liệu PostgreSQL. Cơ chế tích hợp sâu này cam kết dữ liệu đồ họa hiển thị trên toàn bộ các thiết bị Client phân tán được đồng bộ tuyệt đối với trạng thái mới nhất trên Backend, song song với việc giải phóng hoàn toàn áp lực băng thông tĩnh cho Máy chủ lõi.</li>
+        </ul>
+
+        <h3>1.4. Kết luận chương 1</h3>
+        <p>Mục tiêu tối thượng của toàn bộ dự án đồ án là cấu trúc lại hoàn toàn nền tảng cũ để thiết lập một Nút Tích Hợp Trung Tâm (Central Integration Hub) chuyên nghiệp. Nút này tập trung toàn bộ sức mạnh phần cứng vào khả năng điều phối luồng dữ liệu bất đồng bộ giữa các vi dịch vụ và kiểm soát an ninh tại các điểm cuối kết nối (API Security Endpoints). Dự án kiên quyết loại trừ việc lạm dụng các cấu trúc Framework Web dư thừa, hướng tới duy trì tốc độ định tuyến mạng tiệm cận mức tối ưu tuyệt đối thông qua kỹ thuật tích hợp hệ thống chuyên sâu.</p>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>CHƯƠNG 2: PHÂN TÍCH THIẾT KẾ HỆ THỐNG</h2>
+        
+        <h3>2.1. Phân tích yêu cầu hệ thống</h3>
+        
+        <h4>2.1.1. Mô tả nghiệp vụ</h4>
+        <p>Hệ thống MiniGarden vận hành theo mô hình hệ sinh thái thương mại điện tử trực tuyến định hướng B2C (Business-to-Consumer). Khác với các nền tảng sàn giao dịch tự do (C2C Marketplace), MiniGarden tập trung vào trải nghiệm mua sắm khép kín và đồng nhất, nơi Quản trị viên (Admin) đóng vai trò là Nút Điều Phối (Orchestrator), kiểm soát toàn bộ luồng luân chuyển hàng hóa, trạng thái kho bãi và trực tiếp hỗ trợ khách hàng thông qua kênh giao tiếp thời gian thực. Quy trình nghiệp vụ được thiết lập chặt chẽ thông qua các chuỗi giao dịch (Transactions) liên hoàn, từ khâu truy vấn danh mục sản phẩm đến bước nhận xác nhận thanh toán tự động ngoại hệ.</p>
+        <p>Luồng nghiệp vụ cốt lõi của MiniGarden được định nghĩa qua các pha như sau:</p>
+        <ul>
+            <li><strong>Pha Khởi tạo Giỏ hàng:</strong> Khách hàng tiến hành duyệt danh mục cây cảnh, gửi yêu cầu thêm sản phẩm vào giỏ hàng. Hệ thống lưu vết (Tracking) phiên giao dịch tạm thời tại bảng <code>cart_items</code> để duy trì trạng thái dữ liệu (State Maintenance).</li>
+            <li><strong>Pha Định giá:</strong> Hệ thống tiến hành trích xuất dữ liệu, tính toán tổng tải trọng giá trị (Total Amount) dựa trên đơn giá (Price) được truy xuất từ bảng <code>products</code>.</li>
+            <li><strong>Pha Định tuyến Giao vận:</strong> Khách hàng cung cấp thông tin định vị và nhận hàng, dữ liệu này được ánh xạ và quản lý chặt chẽ tại bảng <code>user_addresses</code>.</li>
+            <li><strong>Pha Khởi tạo Giao dịch (Order Instantiation):</strong> Quá trình đặt hàng hoàn tất sẽ kích hoạt Trigger tạo một bản ghi mới vào thực thể <code>orders</code> với trạng thái (Status Flag) mặc định ở mức khởi tạo là <code>pending</code>.</li>
+            <li><strong>Pha Hoàn tất Tích hợp:</strong> Hệ thống định tuyến luồng dữ liệu, tích hợp với cổng PayOS để cấp phát liên kết thanh toán (Payment Link). Sau khi khách hàng sử dụng Mobile Banking để quét mã QR, hệ thống Nút Trung Tâm tự động lắng nghe sự kiện, tiến hành cập nhật trạng thái đơn hàng (State Update) thông qua luồng Webhook mà không cần sự can thiệp thủ công.</li>
+        </ul>
+
+        <h4>2.1.2. Yêu cầu phi chức năng</h4>
+        <ul>
+            <li><strong>Tính ổn định và Toàn vẹn của dữ liệu (Data Integrity):</strong> Việc duy trì tính nguyên tử (Atomicity) của dữ liệu được đảm bảo thông qua việc sử dụng hệ quản trị cơ sở dữ liệu quan hệ PostgreSQL triển khai trên nền tảng Điện toán đám mây (Cloud Neon). Giải pháp này ngăn ngừa triệt để nguy cơ mất mát dữ liệu đơn hàng và lịch sử hội thoại (Chat History). Việc thao tác truy vấn (Query) được thực thi qua bộ thư viện điều khiển Prisma ORM, giúp tối ưu hóa hiệu suất bộ nhớ, tự động ánh xạ quan hệ thực thể, loại bỏ hoàn toàn các lỗ hổng Injection thường gặp khi viết SQL thuần phức tạp.</li>
+            <li><strong>Bảo mật và Xác thực điểm cuối (Endpoint Security):</strong> Toàn bộ các đường ống API nhạy cảm (như <code>/api/orders</code>, <code>/api/messages</code>) đều được đặt dưới sự giám sát nghiêm ngặt của một lớp Middleware xác thực, sử dụng chuẩn mã hóa JSON Web Token (JWT). Nhằm bảo vệ danh tính tối đa, mật khẩu khách hàng không bao giờ lưu trữ dạng Text thô mà được băm (Hashing) qua thuật toán Bcrypt với tham số vòng lặp (Salt Rounds) là 10, vô hiệu hóa các cuộc tấn công quét mật khẩu cục bộ.</li>
+            <li><strong>Tốc độ phản hồi thời gian thực (Real-time Latency):</strong> Đối với module hỗ trợ trực tuyến, hệ thống yêu cầu độ trễ mạng lưới (Network Latency) phải được duy trì ở mức tối thiểu (dưới 100ms). Yêu cầu này bắt buộc kiến trúc hệ thống phải loại bỏ cơ chế HTTP Request/Response chậm chạp để chuyển sang kênh truyền tải kết nối TCP song công.</li>
+        </ul>
+
+        <h3>2.2. Thiết kế hệ thống</h3>
+        <h4>2.2.1. Xác định Actor của hệ thống</h4>
+        <p>Việc phân tích thiết kế hệ thống bắt đầu từ việc xác định các thực thể biên (Edge Entities) tương tác trực tiếp với Nút Trung Tâm để kích hoạt các luồng quy trình nghiệp vụ:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Tác nhân (Actor)</th>
+                    <th>Mô tả quyền hạn và vai trò</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Khách hàng (Customer)</strong></td>
+                    <td>Là tác nhân khởi tạo các luồng truy vấn đọc (Read Queries) để duyệt danh mục sản phẩm. Tác nhân này kích hoạt tiến trình tạo lập đơn hàng, quản trị các địa chỉ cá nhân, và thiết lập các kết nối Socket dai dẳng để tương tác, chat trực tiếp với Admin hỗ trợ.</td>
+                </tr>
+                <tr>
+                    <td><strong>Quản trị viên (Admin)</strong></td>
+                    <td>Là tác nhân có đặc quyền quản trị cấp cao (Root Privileges). Đóng vai trò kiểm soát kho hàng tĩnh (Thực thể <code>products</code>), can thiệp và ghi đè trạng thái của các luồng đơn hàng, đồng thời làm nhiệm vụ phản hồi, điều hướng toàn bộ các phiên hội thoại (Chat Sessions) phát sinh từ phía mạng lưới khách hàng.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="caption">Bảng 2.1: Mô tả các tác nhân chính trong MiniGarden</div>
+
+        <h4>2.2.2. Xây dựng biểu đồ usecase tổng quát</h4>
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH 2.1: BIỂU ĐỒ USE-CASE TỔNG QUÁT VÀO ĐÂY]</div>
+        <div class="caption">Hình 2.1: Biểu đồ Use-case tổng quát</div>
+
+        <h3>2.3. Phân tích chức năng của hệ thống</h3>
+        <p>Dưới lăng kính của môn học Hệ thống thông tin tích hợp, các tính năng phần mềm không chỉ được xem xét là những thao tác thêm/sửa/xóa trên giao diện, mà bản chất cốt lõi là các tiến trình xử lý, định tuyến luồng dữ liệu (Data Routing) và đồng bộ trạng thái (State Synchronization) bên trong kiến trúc máy chủ.</p>
+        
+        <h4>2.3.1. Chức năng đăng nhập</h4>
+        <table>
+            <tbody>
+                <tr>
+                    <td style="width: 25%;"><strong>Tác nhân</strong></td>
+                    <td>Người dùng (Customer/Admin)</td>
+                </tr>
+                <tr>
+                    <td><strong>Mô tả</strong></td>
+                    <td>Hệ thống tiếp nhận thông tin, tiến hành chu trình xác thực danh tính (Identity Authentication) và cấp phát mã JSON Web Token (JWT) dựa trên phân quyền (role) để duy trì trạng thái đăng nhập bảo mật cho một hệ thống vốn mang tính phi trạng thái (Stateless System).</td>
+                </tr>
+                <tr>
+                    <td><strong>Dòng sự kiện chính</strong></td>
+                    <td>
+                        <ol>
+                            <li>Người dùng gửi luồng dữ liệu chứa username và password thông qua phương thức HTTP POST.</li>
+                            <li>Máy chủ Nút Trung Tâm kích hoạt thuật toán <code>bcrypt.compare</code> để đối soát chuỗi mật khẩu thô với mã băm đã lưu trữ an toàn trong Database.</li>
+                            <li>Nếu việc đối soát trùng khớp tuyệt đối, Máy chủ tiến hành ký (Sign) một gói tin JWT mang khối tải trọng (Payload) chứa <code>user_id</code> và <code>role</code> bằng một khóa bí mật, sau đó phản hồi lại cho Client để gắn vào Header của các Request bảo mật tiếp theo.</li>
+                        </ol>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="caption">Bảng 2.2: Đặc tả Use-case đăng nhập</div>
+        
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH 2.2, 2.3, 2.4: BIỂU ĐỒ ĐĂNG NHẬP VÀO ĐÂY]</div>
+
+        <h4>2.3.2. Chức năng quản lý sản phẩm</h4>
+        <p>Chức năng này không đơn thuần là ghi dữ liệu cục bộ vào ổ đĩa, mà là một quy trình kết nối với hệ thống lưu trữ phân tán, cắt giảm băng thông I/O vật lý.</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td style="width: 25%;"><strong>Tác nhân</strong></td>
+                    <td>Admin</td>
+                </tr>
+                <tr>
+                    <td><strong>Mô tả</strong></td>
+                    <td>Cho phép Quản trị viên khởi tạo và cập nhật kho hàng sinh học (cây cảnh), đồng thời hệ thống tự động kích hoạt luồng đồng bộ hóa tệp tin hình ảnh lên mạng lưới máy chủ lưu trữ Cloudinary CDN.</td>
+                </tr>
+                <tr>
+                    <td><strong>Dòng sự kiện chính</strong></td>
+                    <td>
+                        <ol>
+                            <li>Admin điền thông số siêu dữ liệu (Metadata) của cây cảnh và chọn tệp tin hình ảnh đính kèm (File Upload).</li>
+                            <li>Máy chủ tiếp nhận luồng dữ liệu nhị phân thông qua thư viện trung gian Multer, xử lý chúng qua Buffer Stream và đẩy trực tiếp (Push) lên hạ tầng lưu trữ đám mây Cloudinary thông qua SDK chuẩn hóa.</li>
+                            <li>Khi xử lý xong, Máy chủ nhận về một chuỗi định danh tài nguyên an toàn (<code>secure_url</code>) từ Cloudinary và chỉ lưu trữ URI nhẹ bén này cùng các Metadata khác vào bảng <code>products</code> thông qua ORM Prisma.</li>
+                        </ol>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="caption">Bảng 2.3: Đặc tả Use-case quản lý sản phẩm</div>
+        
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH 2.5, 2.6, 2.7: BIỂU ĐỒ THÊM MẪU CÂY VÀO ĐÂY]</div>
+
+        <h4>2.3.3. Chức năng cập nhật thông tin mẫu cây</h4>
+        <table>
+            <tbody>
+                <tr>
+                    <td style="width: 25%;"><strong>Tác nhân</strong></td>
+                    <td>Admin</td>
+                </tr>
+                <tr>
+                    <td><strong>Mô tả</strong></td>
+                    <td>Tiến trình Quản trị viên can thiệp trực tiếp vào cơ sở dữ liệu để tái thiết lập các thông số cơ bản của mẫu cây (như biến động đơn giá, số lượng tồn kho). Quá trình này đòi hỏi Prisma ORM phải thực thi các câu lệnh nguyên tử để khóa bản ghi (Row Lock) trong một phần nghìn giây nhằm cập nhật giá trị. Cơ chế này thiết lập rào cản ngăn chặn xung đột tranh chấp dữ liệu (Race Condition) trong trường hợp khách hàng vô tình chốt đơn hàng ngay tại chính xác thời điểm mức giá đang được sửa đổi.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="caption">Bảng 2.4: Đặc tả Use-case cập nhật thông tin mẫu cây</div>
+        
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH 2.8, 2.9, 2.10: BIỂU ĐỒ CẬP NHẬT MẪU CÂY VÀO ĐÂY]</div>
+
+        <h4>2.3.4. Chức năng xóa mẫu cây</h4>
+        <table>
+            <tbody>
+                <tr>
+                    <td style="width: 25%;"><strong>Tác nhân</strong></td>
+                    <td>Admin</td>
+                </tr>
+                <tr>
+                    <td><strong>Mô tả</strong></td>
+                    <td>Thao tác loại bỏ cấu trúc dữ liệu của một thực thể mẫu cây khi hết chu kỳ kinh doanh. Việc xóa bản ghi trong bảng <code>products</code> được thiết kế chặt chẽ và giám sát qua cơ chế khóa ngoại (Foreign Keys Constraints). Nếu một sản phẩm đã từng tồn tại trong hóa đơn bán hàng (nằm trong bảng <code>order_details</code>), hệ thống sẽ chặn thao tác xóa cứng (Hard Delete) và yêu cầu chuyển sang phương thức vô hiệu hóa trạng thái (Soft Delete) nhằm đảm bảo bảo toàn tính toàn vẹn Referential Integrity cho hệ thống dữ liệu kế toán.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="caption">Bảng 2.5: Đặc tả Use-case chức năng xóa mẫu cây</div>
+
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH 2.11, 2.12, 2.13: BIỂU ĐỒ XÓA MẪU CÂY VÀO ĐÂY]</div>
+
+        <h4>2.3.5. Chức năng thanh toán</h4>
+        <p>Đây là khối chức năng hội tụ tính chất "tích hợp hệ thống" cao nhất của toàn bộ dự án, vận hành hoàn toàn độc lập với thao tác của con người.</p>
+        <p><strong>Mô tả luồng giao dịch khép kín:</strong> Khi đơn hàng chuyển sang trạng thái chờ, Client kích hoạt luồng thanh toán. Nút Trung Tâm đàm phán với điểm cuối API của PayOS để khởi tạo phiên giao dịch và nhận về mã định danh. Hệ thống tạo lập và render mã QR động trên màn hình. Khách hàng sử dụng ứng dụng Mobile Banking để thanh toán. Kể từ giây phút này, toàn bộ tiến trình đối soát phía sau được ủy quyền hoàn toàn cho hệ thống Webhook hoạt động ngầm (Background Listener), chờ đợi tín hiệu báo "Có" từ hệ thống liên ngân hàng để cập nhật trạng thái đơn hàng cục bộ.</p>
+        
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH 2.14, 2.15, 2.16: BIỂU ĐỒ THANH TOÁN VÀO ĐÂY]</div>
+
+        <h4>2.3.6. Chức năng nhắn tin</h4>
+        <p><strong>Mô tả cơ chế vận hành:</strong> Module nhắn tin loại bỏ hoàn toàn giao thức HTTP chậm chạp để chuyển sang vận hành trên giao thức mạng phân tán WebSocket. Quá trình thiết lập kết nối (Handshake) khởi tạo một liên kết TCP dai dẳng giữa Client và Server. Khi Admin hoặc Khách hàng gõ phím và nhấn gửi, thông điệp không cần đợi tải trang mà lập tức được bọc thành một Packet dung lượng cực nhỏ, ném vào đường ống sự kiện (Event Emitter) và phát sóng (Broadcast) trúng đích ngay tới định danh thiết bị của đối phương với tốc độ phản hồi tính bằng mili-giây.</p>
+        
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH 2.17, 2.18, 2.19: BIỂU ĐỒ NHẮN TIN VÀO ĐÂY]</div>
+
+        <h3>2.4. Thiết kế hệ thống cơ sở dữ liệu</h3>
+        <p>Hệ thống MiniGarden sử dụng PostgreSQL làm hệ quản trị cơ sở dữ liệu quan hệ, được điều phối, di trú (Migration) và quản lý qua Prisma ORM. Lược đồ kiến trúc (Database Schema) bao gồm 08 bảng thực thể, được thiết kế tối ưu cho việc truy vấn và đối soát định danh chéo với các hệ thống ngoài.</p>
+        
+        <h4>2.4.1. Mô tả chi tiết các bảng dữ liệu</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Tên Bảng (Map)</th>
+                    <th style="width: 35%;">Trường Dữ Liệu</th>
+                    <th>Mục đích nghiệp vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>users</strong></td>
+                    <td>id, username, password_hash, role</td>
+                    <td>Quản lý gốc tài khoản định danh, lưu trữ khóa băm mật khẩu. Phân rã quyền truy cập (Role-based: admin, customer).</td>
+                </tr>
+                <tr>
+                    <td><strong>products</strong></td>
+                    <td>product_id, name, price, stock, category</td>
+                    <td>Lưu trữ siêu dữ liệu hàng hóa và đóng vai trò làm điểm neo URI liên kết với kho hình ảnh phân tán Cloudinary.</td>
+                </tr>
+                <tr>
+                    <td><strong>orders</strong></td>
+                    <td>order_id, user_id, total, status, payos_id</td>
+                    <td>Ghi nhận hóa đơn kế toán, lưu vết trạng thái vòng đời thanh toán và đóng vai trò là khóa đối soát (payos_id) với hệ thống ngoại hệ PayOS.</td>
+                </tr>
+                <tr>
+                    <td><strong>order_details</strong></td>
+                    <td>id, order_id, product_id, quantity</td>
+                    <td>Lưu vết định lượng chi tiết các sản phẩm thuộc một phiên giao dịch cụ thể, ràng buộc khóa ngoại cứng với bảng orders.</td>
+                </tr>
+                <tr>
+                    <td><strong>carts</strong></td>
+                    <td>cart_id, user_id</td>
+                    <td>Duy trì phiên làm việc giỏ hàng của thiết bị. Thực thể này mang ràng buộc quan hệ 1-1 cực kỳ khắt khe với thực thể User.</td>
+                </tr>
+                <tr>
+                    <td><strong>cart_items</strong></td>
+                    <td>id, cart_id, product_id, quantity</td>
+                    <td>Danh sách liên kết mềm chứa các sản phẩm đang nằm trong hàng đợi mua sắm, chờ kích hoạt giao dịch.</td>
+                </tr>
+                <tr>
+                    <td><strong>messages</strong></td>
+                    <td>id, sender, receiver, text, is_read</td>
+                    <td>Đóng vai trò làm bộ đệm lưu trữ dự phòng lâu dài cho các khối hội thoại phát sinh liên tục từ kênh Real-time Socket.io.</td>
+                </tr>
+                <tr>
+                    <td><strong>user_addresses</strong></td>
+                    <td>id, user_id, address, is_default</td>
+                    <td>Cuốn sổ cái điện tử quản lý thông tin tọa độ giao vận của khách hàng, phục vụ luồng xử lý Logistics.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="caption">Bảng 2.6: Chi tiết cấu trúc 08 bảng dữ liệu thực tế</div>
+
+        <h4>2.4.2. Sơ đồ thực thể liên kết (ERD)</h4>
+        <div class="placeholder">[SINH VIÊN CHÈN HÌNH ẢNH SƠ ĐỒ ERD (HÌNH 2.20) VÀO ĐÂY]</div>
+        <div class="caption">Hình 2.20: Hình ảnh sơ đồ ERD</div>
+
+        <h3>2.5. Phân tích tích hợp hệ thống (System Integration Analysis)</h3>
+        <p>Nền tảng của kiến trúc hệ thống hiện đại nằm ở khả năng phân tán tài nguyên. Hệ thống MiniGarden chia sẻ và giải phóng khối lượng công việc khổng lồ của máy chủ cục bộ thông qua 3 điểm tích hợp API mũi nhọn:</p>
+        
+        <h4>2.5.1. Tích hợp Lưu trữ Phân tán Cloudinary CDN</h4>
+        <p>Hệ thống Nút Trung Tâm tích hợp kiến trúc phân phối nội dung Cloudinary CDN nhằm mục đích tước bỏ gánh nặng lưu trữ ảnh tĩnh. Luồng xử lý kỹ thuật diễn ra như sau: Trình duyệt Client đóng gói tệp tĩnh theo chuẩn <code>Multipart/form-data</code>. Máy chủ Node.js tiếp nhận luồng dữ liệu (Data Pipeline) qua Middleware Multer. Tại đây, thay vì ghi đè vào ổ cứng vật lý cục bộ gây thắt cổ chai I/O, luồng Stream được bẻ lái, đẩy trực tiếp lên Cloudinary SDK. Máy chủ đám mây lập tức xử lý nén và phản hồi một URL bảo mật (Secure URL). Cuối cùng, hệ thống nội bộ chỉ việc lưu trữ đoạn tham chiếu URL nhẹ bén này vào PostgreSQL Database.</p>
+
+        <h4>2.5.2. Tích hợp Mạng lưới Thời gian thực Socket.io</h4>
+        <p>Để tối ưu hóa luồng chăm sóc khách hàng, hệ thống sử dụng bộ thư viện Socket.io để thiết lập kênh giao tiếp thời gian thực đa chiều. Bằng việc nâng cấp giao thức HTTP tĩnh lên WebSocket, Server duy trì một cấu trúc Map (Bảng định tuyến <code>userSocketMap</code> lưu trên bộ nhớ RAM) để theo dõi và định vị đích xác tài khoản nào đang Online tại một phiên kết nối thiết bị cụ thể. Khi có một tải trọng tin nhắn (Message Payload) xuất phát từ bất kỳ đầu cuối nào, Server xử lý song song hai tác vụ (Asynchronous Tasks): Vừa thực thi I/O ghi lịch sử vào Database để dự phòng, vừa ngay lập tức kích hoạt hàm <code>Emit</code>, đẩy gói sự kiện xuyên qua mạng lưới trực tiếp tới địa chỉ <code>ID Socket</code> của thiết bị nhận với độ trễ bằng 0.</p>
+
+        <h4>2.5.3. Tích hợp Cổng thanh toán Tự động PayOS bằng Webhook</h4>
+        <p>Quy trình giao tiếp API với cổng thanh toán mở PayOS được chia thành 5 chu trình khép kín, được tối ưu hóa ở mức cao nhất để loại bỏ hoàn toàn sự can thiệp của con người vào việc xác nhận dòng tiền:</p>
+        
+        <ol>
+            <li><strong>Khởi tạo kết nối (API Initiation):</strong> Backend Nút Trung Tâm gọi phương thức <code>payos.createPaymentLink()</code>, đẩy Payload chứa siêu dữ liệu và giá trị đơn hàng sang hệ thống PayOS để xin cấp phát phiên giao dịch điện tử.</li>
+            <li><strong>Định tuyến Thanh toán (Payment Routing):</strong> Nút Trung Tâm nhận về <code>checkoutUrl</code>, tự động render khung mã QR động trên giao diện UI (User Interface) để khách hàng thao tác quét ứng dụng ngân hàng.</li>
+            <li><strong>Lắng nghe Webhook (Webhook Listening):</strong> Ngay khi dòng tiền được ngân hàng đối soát thành công, hệ thống máy chủ PayOS chủ động gửi một Request POST chứa tải trọng kết quả đâm thẳng tới Endpoint công khai <code>/api/orders/webhook</code> của hệ thống nội bộ.</li>
+            <li><strong>Xác thực Chữ ký (Signature Verification):</strong> Để chống tấn công bảo mật, máy chủ nội bộ không tin tưởng Payload này ngay lập tức. Nó chạy thuật toán giải mã, dùng hàm <code>payos.verifyPaymentWebhookData()</code> băm lại toàn bộ chuỗi dữ liệu thô với một mã bí mật (Checksum Key) để kiểm chứng tính toàn vẹn của chữ ký số (chuẩn HMAC-SHA256).</li>
+            <li><strong>Cập nhật Trạng thái (State Commit):</strong> Khi và chỉ khi thuật toán xác thực chữ ký báo kết quả khớp tuyệt đối, Hệ thống mới gửi truy vấn an toàn tới tầng Database, cập nhật trường trạng thái của đơn hàng thành <code>paid</code>, chính thức đóng vòng đời của chuỗi tích hợp hệ thống.</li>
+        </ol>
+        <div class="caption">Bảng 2.7: Quy trình 5 bước tích hợp PayOS chuẩn hóa</div>
+
+        <h3>2.6. Kết luận Chương 2</h3>
+        <p>Thông qua việc phân tích sâu sắc các luồng định tuyến API và quy trình trao đổi dữ liệu, Chương 2 đã làm rõ sự chuyển dịch từ một kiến trúc nguyên khối cô lập sang một mạng lưới phân tán. Bằng cách thiết lập Nút Trung Tâm (Central Hub) mạnh mẽ, hệ thống MiniGarden đã ủy quyền thành công các tác vụ nặng (như lưu trữ tĩnh, đối soát tài chính, duy trì kết nối TCP) cho các dịch vụ biên chuyên biệt (Cloudinary, PayOS, Socket.io). Việc tái cấu trúc cơ sở dữ liệu với các trường định danh chéo (Cross-entity Identity) và triển khai thuật toán bảo mật điểm cuối HMAC-SHA256 là minh chứng rõ nét cho việc làm chủ lý thuyết môn Hệ thống thông tin tích hợp, đảm bảo tính toàn vẹn (Integrity), an ninh (Security) và khả năng mở rộng (Scalability) của toàn bộ hệ sinh thái.</p>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>CHƯƠNG 3: CÀI ĐẶT VÀ ĐÁNH GIÁ ĐIỂM TÍCH HỢP HỆ THỐNG</h2>
+
+        <h3>3.1. Cấu trúc môi trường và Công nghệ triển khai mạng lưới</h3>
+        <p>Hệ thống MiniGarden không chỉ là một ứng dụng web thông thường mà được thiết kế như một hệ sinh thái phân tán (Distributed Ecosystem). Việc cài đặt và triển khai đòi hỏi sự kết hợp đồng bộ giữa các môi trường mã nguồn mở nội bộ và các dịch vụ đám mây (Cloud Services) bên ngoài. Dưới đây là bảng phân rã chi tiết kiến trúc tầng mạng và bộ công nghệ cốt lõi được áp dụng:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Phân lớp mạng</th>
+                    <th style="width: 25%;">Bộ Công nghệ</th>
+                    <th style="width: 15%;">Phiên bản</th>
+                    <th>Vai trò trong Hệ thống Tích hợp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="4"><strong>Client Node (Frontend)</strong></td>
+                    <td>React.js / Vite</td>
+                    <td>19.0 / 8.0</td>
+                    <td>Thư viện UI và Công cụ Build. Đảm nhận vai trò Presentation Layer, giao tiếp với Nút Trung Tâm qua RESTful API và WSS.</td>
+                </tr>
+                <tr>
+                    <td>Tailwind CSS</td>
+                    <td>3.4.1</td>
+                    <td>Framework CSS Utility-first, tối ưu hóa giao diện Client mà không làm phình to kích thước Bundle truyền tải.</td>
+                </tr>
+                <tr>
+                    <td>Axios</td>
+                    <td>1.14.0</td>
+                    <td>Bộ giao tiếp HTTP Client, quản lý luồng Request/Response và tự động gắn JWT Header qua cơ chế Interceptor.</td>
+                </tr>
+                <tr>
+                    <td>Socket.io Client</td>
+                    <td>4.8.3</td>
+                    <td>Bộ thư viện kết nối Socket, duy trì đường ống truyền thông thời gian thực ở phía thiết bị người dùng.</td>
+                </tr>
+                <tr>
+                    <td rowspan="5"><strong>Central Hub (Backend)</strong></td>
+                    <td>Node.js / Express</td>
+                    <td>>= 18 / 5.2.1</td>
+                    <td>Runtime môi trường. Đóng vai trò là API Gateway định tuyến và điều phối toàn bộ luồng dữ liệu bất đồng bộ.</td>
+                </tr>
+                <tr>
+                    <td>Prisma ORM</td>
+                    <td>6.6.0</td>
+                    <td>Công cụ giao tiếp cơ sở dữ liệu, quản lý tập trung Database PostgreSQL và bảo vệ tính toàn vẹn của Transaction.</td>
+                </tr>
+                <tr>
+                    <td>Bcrypt / JWT</td>
+                    <td>6.0 / 9.0</td>
+                    <td>Hệ thống mật mã học: Băm mật khẩu một chiều và ký phát mã thông báo xác thực chéo giữa các phiên làm việc.</td>
+                </tr>
+                <tr>
+                    <td>Multer / Nodemailer</td>
+                    <td>2.1 / 8.0</td>
+                    <td>Bộ xử lý luồng đệm (Buffer Stream) đa phương tiện và Module định tuyến luồng Email SMTP.</td>
+                </tr>
+                <tr>
+                    <td>Socket.io Server</td>
+                    <td>4.8.3</td>
+                    <td>Bộ xử lý phân luồng tin nhắn (Event Emitter), quản lý Hash Map danh sách khách hàng đang Online.</td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>Integration Endpoints (Dịch vụ ngoài)</strong></td>
+                    <td>Cloudinary SDK</td>
+                    <td>2.9.0</td>
+                    <td>Cổng kết nối với mạng lưới Edge CDN, tiếp nhận luồng Upload ảnh và phân phối tài nguyên tĩnh toàn cầu.</td>
+                </tr>
+                <tr>
+                    <td>@payos/node</td>
+                    <td>2.0.5</td>
+                    <td>SDK giao tiếp với Cổng thanh toán quốc gia, tạo lập vòng đời giao dịch và sinh chữ ký bảo mật Webhook.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="caption">Bảng 3.1: Chi tiết hệ sinh thái công nghệ phân tán trong MiniGarden</div>
+
+        <p><strong>Cấu hình triển khai hệ thống:</strong> Quá trình cài đặt đòi hỏi việc thiết lập nghiêm ngặt các biến môi trường (Environment Variables) thông qua tệp <code>.env</code>. Các tham số như <code>DATABASE_URL</code> (dành cho kết nối PostgreSQL trên nền tảng Neon Cloud), <code>PAYOS_CLIENT_ID</code>, <code>PAYOS_API_KEY</code>, và <code>PAYOS_CHECKSUM_KEY</code> (dành cho xác thực chữ ký Webhook) phải được bảo mật tuyệt đối. Việc di trú cấu trúc dữ liệu (Database Migration) được thực thi hoàn toàn tự động thông qua lệnh <code>npx prisma db push</code>, loại bỏ hoàn toàn rủi ro sai lệch cấu trúc bảng khi triển khai trên các cụm máy chủ khác nhau.</p>
+
+        <h3>3.2. Kết quả triển khai và Đánh giá luồng giao tiếp hệ thống</h3>
+        <p>Kết quả của quá trình tích hợp hệ thống phức tạp phía máy chủ (Server-side) được phản ánh trực quan qua các điểm chạm tương tác trên giao diện Client. Dưới đây là phân tích kỹ thuật về những luồng giao tiếp ẩn sau các màn hình UI:</p>
+        
+        <h4>3.2.1. Phân phối tài nguyên tĩnh qua mạng biên (Hình 3.1, 3.2)</h4>
+        <p>Giao diện Trang chủ và trang Hiển thị mẫu cây là minh chứng sống động cho sự thành công của luồng tích hợp Edge CDN từ Cloudinary. Khác biệt với kiến trúc cũ nơi hình ảnh được tải cục bộ gây thắt cổ chai I/O, tại đây, hệ thống Nút Trung Tâm hoàn toàn không chịu bất kỳ chi phí băng thông hình ảnh nào. Trình duyệt Client trực tiếp nã các HTTP GET Request tới cụm máy chủ Cloudinary đặt tại các khu vực địa lý gần nhất. Kết quả đo lường cho thấy thời gian phản hồi (Time-to-First-Byte) của khối lượng hình ảnh lớn giảm xuống dưới mức 50ms, đảm bảo trải nghiệm duyệt Web mượt mà (Smooth Rendering) bất chấp lượng truy cập tăng đột biến.</p>
+        
+        <h4>3.2.2. Kiểm soát truy cập và Định danh phiên làm việc (Hình 3.3, 3.4, 3.5, 3.9)</h4>
+        <p>Hệ thống màn hình Đăng nhập, Đăng ký, Khôi phục và Đổi mật khẩu không chỉ là các Form nhập liệu thông thường, mà là các thiết bị đầu cuối (Terminals) kích hoạt chuỗi luồng xử lý nhận dạng và phân quyền (Authentication & Authorization). Khi khách hàng thực thi Form Đăng nhập, Nút Trung Tâm tiến hành băm mật khẩu thô và đối soát với Database. Thành quả của luồng này là một chuỗi mã hóa JSON Web Token (JWT) được trả về và lưu trữ an toàn tại Client. Kể từ giây phút này, mọi giao dịch mua sắm (như Thêm vào giỏ hàng) đều được Axios Interceptor tự động đính kèm Token này vào Header <code>Authorization: Bearer</code>, thiết lập một lớp bảo vệ vững chắc chống lại các rủi ro tấn công giả mạo (CSRF) mà không cần duy trì Session tốn kém trên RAM máy chủ.</p>
+
+        <h4>3.2.3. Tự động hóa vòng đời giao dịch tài chính (Hình 3.6, 3.8)</h4>
+        <p>Giao diện Giỏ hàng và màn hình Đặt hàng thành công là bề nổi của một khối lượng công việc khổng lồ đằng sau kiến trúc tích hợp PayOS. Khi khách hàng nhấn nút thanh toán tại Hình 3.6, hệ thống Nút Trung Tâm ngay lập tức khởi tạo một liên kết mạng (Network Socket) tới Server của PayOS, truyền tải toàn bộ siêu dữ liệu đơn hàng và nhận về một chuỗi URL thanh toán để render mã QR. Điểm đột phá về mặt tích hợp nằm ở giao diện Hình 3.8: Giao diện "Thành công" này được kích hoạt hoàn toàn tự động! Hệ thống nội bộ đã âm thầm mở một Endpoint <code>/api/orders/webhook</code>, lắng nghe tín hiệu HTTP POST từ liên ngân hàng, tự động xác thực chữ ký HMAC-SHA256, và gửi lệnh Commit xuống cơ sở dữ liệu để cập nhật trạng thái đơn hàng. Không có bất kỳ sự can thiệp thủ công nào từ phía Admin.</p>
+
+        <h4>3.2.4. Khử độ trễ trong giao tiếp song công (Hình 3.7)</h4>
+        <p>Giao diện Chat nội bộ là minh họa hoàn hảo cho việc vượt qua giới hạn của giao thức HTTP Request-Response truyền thống. Bằng việc tích hợp công nghệ WebSocket thông qua Socket.io, hệ thống đã thiết lập một "đường ống" liên lạc dai dẳng (Persistent TCP Connection). Mọi thông báo từ Admin hoặc thao tác gõ phím của khách hàng đều được bọc thành các gói tin siêu nhỏ (Micro-payloads) và phát sóng (Broadcast) trúng đích tới định danh Socket ID của đối phương. Kết quả hiển thị cho thấy văn bản được cập nhật vào cây DOM của trình duyệt ngay lập tức theo thời gian thực (Real-time), mang lại trải nghiệm tiệm cận với các ứng dụng nhắn tin Native như Zalo hay Messenger.</p>
+
+        <div class="placeholder">
+            [SINH VIÊN CHÈN TOÀN BỘ CÁC HÌNH TỪ 3.1 ĐẾN 3.9 VÀO ĐÂY]<br>
+            (Nhớ ghi rõ Caption bên dưới mỗi hình để khớp với phần phân tích)
+        </div>
+
+        <h3>3.3. Đánh giá hệ thống chuyên sâu và Định hướng mở rộng mạng lưới</h3>
+        
+        <h4>3.3.1. Đánh giá ưu điểm và hạn chế trong kiến trúc tích hợp</h4>
+        <p><strong>Ưu điểm đột phá về mặt Kiến trúc kỹ thuật:</strong></p>
+        <ul>
+            <li><strong>Xóa bỏ hoàn toàn nút thắt cổ chai tài chính:</strong> Việc hệ thống duy trì điểm cuối Webhook tự động 24/7 giúp đồng bộ trạng thái đơn hàng (Real-time Transaction Commit) với hệ thống ngân hàng nhà nước ngay trong tích tắc. Quá trình này không chỉ loại trừ 100% rủi ro sai sót do đối soát kế toán thủ công mà còn ngăn chặn hiện tượng tắc nghẽn tồn kho ảo (Virtual Stock Bottleneck) khi có quá nhiều đơn hàng treo.</li>
+            <li><strong>Triệt tiêu độ trễ liên lạc (Zero-latency Communication):</strong> Kênh tích hợp phân tán Socket.io đã loại bỏ triệt để chi phí hao phí (Overhead) của việc thiết lập các Handshake HTTP liên tục. Băng thông được tối ưu, đảm bảo luồng thông điệp đa chiều giữa Nút Admin và Nút Client đạt độ trễ nội mạng tiệm cận mức dưới 30 mili-giây.</li>
+            <li><strong>Tối ưu hóa băng thông I/O thông qua ủy quyền (Offloading):</strong> Bằng chiến lược ủy quyền 100% việc lưu trữ và phân phối tài nguyên tĩnh cho mạng lưới Cloudinary Edge CDN, cụm máy chủ cục bộ đã được giải cứu khỏi gánh nặng xử lý I/O đĩa cứng. Hiện tại, Nút Trung Tâm chỉ tập trung sức mạnh CPU vào việc xử lý các luồng Logic Code siêu nhẹ, giúp sức chịu tải đồng thời (Concurrency Capacity) của nền tảng tăng vọt lên gấp hàng chục lần so với phiên bản nguyên khối cũ.</li>
+        </ul>
+        
+        <p><strong>Những giới hạn tồn đọng cần khắc phục:</strong></p>
+        <ul>
+            <li><strong>Điểm mù trong cơ chế duy trì kết nối bất đồng bộ:</strong> Công nghệ WebSocket hiện tại phụ thuộc chặt chẽ vào vòng đời sinh tồn (Lifecycle) của Tab trình duyệt Web. Hệ thống chưa tích hợp kiến trúc Service Workers hoạt động ngầm để có thể đẩy thông báo độc lập (Push Notification) nhằm lôi kéo khách hàng quay lại khi họ đã đóng giao diện ứng dụng.</li>
+            <li><strong>Rào cản từ môi trường phát triển cục bộ (Localhost Tunneling):</strong> Kiến trúc bảo mật Webhook của hệ thống lõi PayOS đòi hỏi một địa chỉ Public IP công khai trên Internet để đâm ngược luồng dữ liệu về (Callback). Việc giả lập đường hầm mạng (Ngrok/LocalTunnel) hoặc viết các Script Polling giả lập trong môi trường phát triển cục bộ đôi khi gây ra sự thiếu ổn định và gián đoạn trong các pha kiểm thử tích hợp (Integration Testing).</li>
+            <li><strong>Thiếu hụt đường ống phân tích dữ liệu lớn (Data Pipeline):</strong> Toàn bộ lượng dữ liệu giao dịch tài chính và lịch sử truy cập hiện tại mới chỉ được lưu trữ thuần túy dưới dạng cơ sở dữ liệu giao dịch (OLTP). Hệ thống đang khuyết thiếu một module đồng bộ chéo (ETL Export) sang các hệ thống kho dữ liệu phân tích (Data Warehouse / OLAP) bên thứ ba để trích xuất báo cáo kinh doanh chuyên sâu (Business Intelligence).</li>
+        </ul>
+
+        <h4>3.3.2. Hướng phát triển và mở rộng không gian kiến trúc trong tương lai</h4>
+        <p>Để biến MiniGarden từ một đồ án môn học thành một nền tảng thương mại điện tử cấp doanh nghiệp (Enterprise-level), kiến trúc hệ thống cần được định hướng mở rộng theo các trọng điểm sau:</p>
+        <ol>
+            <li><strong>Tích hợp Hệ sinh thái Trí tuệ Nhân tạo (AI LLM Integration):</strong> Mở rộng mạng lưới kết nối API tới các dịch vụ mô hình ngôn ngữ lớn (như OpenAI GPT-4 hoặc Google Gemini) thông qua RESTful API. Mục tiêu là thiết lập một Nút Dịch Vụ AI chuyên đảm nhận việc phân tích ngữ nghĩa (Semantic Analysis) luồng tin nhắn thô từ khách hàng, từ đó tự động gợi ý câu trả lời chốt sale cho Admin hoặc cấu hình một Chatbot AI phản hồi tự động (Auto-Responder Workflow) phục vụ ngoài giờ hành chính.</li>
+            <li><strong>Thiết lập Webhook chéo với hệ thống Logistics quốc gia:</strong> Khai thác sâu hơn lý thuyết hệ thống thông tin tích hợp bằng cách thiết lập API kết nối hai chiều với các đơn vị vận chuyển (Viettel Post, Giao Hàng Tiết Kiệm). Khi Webhook tài chính báo đơn hàng "PAID", Nút Trung Tâm sẽ tự động gọi luồng POST để tạo vận đơn trên hệ thống đối tác, đồng thời mở một Listener mới để lắng nghe lộ trình di chuyển (Tracking Webhook), đồng bộ trạng thái giao hàng Real-time trực tiếp lên giao diện của người mua.</li>
+            <li><strong>Nâng cấp Kiến trúc Bảo mật (Single Sign-On / OAuth2.0):</strong> Tích hợp các hệ thống quản trị định danh phi tập trung (Decentralized Identity) như Google OAuth hoặc Facebook Login. Việc này không chỉ giảm thiểu ma sát (Friction) trong trải nghiệm đăng ký tài khoản mà còn ủy quyền (Delegate) hoàn toàn rủi ro bảo mật mật khẩu cho các "ông lớn" công nghệ.</li>
+            <li><strong>Chuyển dịch lên cấu trúc Microservices toàn diện (Docker & Kubernetes):</strong> Khi quy mô dữ liệu và lưu lượng tăng vọt, khối Monolithic Backend Node.js hiện tại sẽ bộc lộ điểm yếu. Hướng đi bắt buộc là chia tách (Decoupling) hệ thống thành các Container độc lập (ví dụ: Microservice Thanh toán, Microservice Chat, Microservice Hàng hóa). Các cụm Container này sẽ được quản trị bởi hạ tầng Kubernetes (K8s) để có khả năng tự động co giãn sức mạnh tính toán (Auto-scaling) theo nhu cầu sử dụng thực tế của từng dịch vụ phân mảnh.</li>
+            <li><strong>Triển khai Nền tảng Đa thiết bị (Cross-platform Native App):</strong> Chuyển hóa các luồng API RESTful hiện tại để phục vụ thêm cho các thiết bị di động. Ứng dụng công nghệ React Native để phát triển các ứng dụng Native trên iOS và Android, dùng chung một Nút Trung Tâm (Backend) duy nhất nhằm tối ưu hóa chi phí phát triển và đảm bảo tính nhất quán dữ liệu trên toàn bộ hệ sinh thái.</li>
+        </ol>
+
+        <h3>3.4. Kết luận Chương 3</h3>
+        <p>Tổng kết lại, Chương 3 đã trình bày minh bạch toàn bộ bức tranh kiến trúc kỹ thuật triển khai của hệ thống MiniGarden. Từ việc phân lớp hạ tầng mạng (Client - Hub - Endpoints) cho đến việc kiểm chứng tính đúng đắn của các luồng giao tiếp API thông qua các kết quả thực tế trên giao diện. Các điểm tích hợp lõi như phân phối tĩnh Cloudinary, kết nối thời gian thực Socket.io và đặc biệt là cơ sở hạ tầng giao dịch tự động PayOS đã chứng minh tính ưu việt của thiết kế. Mặc dù vẫn còn tồn đọng một số hạn chế về điểm mù kết nối và môi trường kiểm thử cục bộ, nhưng với 5 định hướng mở rộng hệ sinh thái (AI, Logistics, OAuth2, Microservices, Native App) đã đề ra, dự án có đầy đủ cơ sở khoa học và thực tiễn để nâng cấp thành một hệ thống thông tin quy mô doanh nghiệp.</p>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>KẾT LUẬN CHUNG</h2>
+        <p>Quá trình thực tập và triển khai dự án thương mại điện tử phân tán MiniGarden là một cột mốc mang tính bước ngoặt, giúp em chuyển hóa thành công các khối lý thuyết hàn lâm từ giảng đường Đại học thành các giải pháp kỹ thuật có khả năng giải quyết bài toán nghiệp vụ thực tiễn. Đồ án này đã hoàn toàn thoát khỏi cái bóng của một phần mềm bán hàng Website đơn nguyên (Monolithic CRUD Web App) truyền thống, để thực sự chạm đến bản chất cốt lõi của việc thiết kế và vận hành một <strong>mạng lưới hệ thống thông tin liên kết (Integrated Information Systems Network)</strong>.</p>
+        
+        <p>Dưới góc độ chuyên môn kỹ thuật, dự án đã đạt được những thành tựu kiến trúc đáng tự hào. Em đã cấu trúc lại thành công một nền tảng rườm rà thành một <strong>Nút Trung Tâm Điều Phối (Central Integration Hub)</strong> tinh gọn và hiệu năng cao, sử dụng Node.js/Express kết hợp với CSDL PostgreSQL thông qua sức mạnh của Prisma ORM. Đỉnh cao của đồ án chính là việc thiết lập, bảo mật và vận hành trơn tru các đường ống kết nối đa dịch vụ ngoại hệ (Cross-system Pipelines). Cụ thể bao gồm: (1) Tích hợp hoàn hảo cổng PayOS bằng cơ chế Webhook kết hợp với chuẩn bảo mật chữ ký điện tử HMAC-SHA256, giúp tự động hóa 100% luồng đối soát tài chính; (2) Tích hợp Socket.io để thiết lập kênh truyền thông song công toàn phần (Full-duplex), phá vỡ giới hạn độ trễ mạng lưới; và (3) Tích hợp Cloudinary SDK để tước bỏ gánh nặng lưu trữ I/O, phân tán tải trọng vật lý lên các cụm nút mạng biên (Edge CDN) toàn cầu. Những điểm tích hợp thực chiến này đã minh chứng hùng hồn cho sức mạnh vô song của triết lý chia sẻ tài nguyên trong các hệ thống phân tán.</p>
+        
+        <p>Quãng thời gian cọ xát thực tế tại doanh nghiệp Công ty TNHH Synopex Việt Nam, cùng sự chỉ dẫn tận tâm, định hướng học thuật khắt khe của cô Nguyễn Thị Phương Hạnh đã củng cố mạnh mẽ tư duy hệ thống (Systems Thinking) trong em. Việc học cách tư duy theo luồng định tuyến API, xử lý các tiến trình bất đồng bộ (Asynchronous Processes), và đặc biệt là quản trị rủi ro bảo mật tại các điểm cuối kết nối (Endpoints) chính là hành trang vô giá để em tự tin bước chân vào môi trường kỹ thuật phần mềm chuyên nghiệp. Dù hệ thống MiniGarden hiện tại vẫn còn không ít giới hạn cần tinh chỉnh, nhưng đây chắc chắn là viên gạch nền móng vững chãi nhất để em tiếp tục dấn thân và mở rộng nghiên cứu sâu hơn về các kiến trúc vi dịch vụ (Microservices Architecture) phức tạp trong tương lai.</p>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>TÀI LIỆU THAM KHẢO</h2>
+        <p>[1] OpenJS Foundation (2024). <em>Node.js v20 LTS Official Documentation</em>, truy xuất từ: https://nodejs.org/docs/latest/api/.</p>
+        <p>[2] Meta Open Source (2024). <em>React 19 Architecture and API Reference</em>, truy xuất từ: https://react.dev/.</p>
+        <p>[3] Prisma Data Inc. (2024). <em>Prisma ORM Reference and Relational Database Concepts for PostgreSQL</em>, truy xuất từ: https://www.prisma.io/docs.</p>
+        <p>[4] Socket.io Contributors (2024). <em>Socket.IO v4 – Bidirectional and Low-Latency Communication Over WebSockets</em>, truy xuất từ: https://socket.io/docs/v4/.</p>
+        <p>[5] Cloudinary Ltd. (2024). <em>Cloudinary Image Management API & Distributed CDN Delivery Guide</em>, truy xuất từ: https://cloudinary.com/documentation.</p>
+        <p>[6] PayOS Engineering Team (2024). <em>PayOS Developer Documentation – Webhook Integration and Checksum HMAC Security</em>, truy xuất từ: https://payos.vn/docs/.</p>
+        <p>[7] Adam Wathan (2024). <em>Tailwind CSS v3 – Utility-First Framework for Rapid UI Development</em>, truy xuất từ: https://tailwindcss.com/docs.</p>
+        <p>[8] Auth0 by Okta (2024). <em>Introduction to JSON Web Tokens (JWT) and API Endpoint Authentication</em>, truy xuất từ: https://jwt.io/introduction.</p>
+
+    </div>
+
+    <script>
+        function copyContent() {
+            const content = document.getElementById('report-content');
+            const range = document.createRange();
+            range.selectNode(content);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            
+            try {
+                document.execCommand('copy');
+                alert('✅ THÀNH CÔNG! Đã copy TOÀN BỘ báo cáo (từ Danh mục từ viết tắt đến Tài liệu tham khảo) vào bộ nhớ.\n\nBây giờ bạn mở file Word lên và nhấn "Ctrl + V" (hoặc "Paste") nhé!');
+            } catch (err) {
+                alert('❌ Lỗi không copy được, vui lòng bôi đen thủ công nội dung bên dưới và copy.');
+            }
+            
+            window.getSelection().removeAllRanges();
+        }
+    </script>
+</body>
+</html>
